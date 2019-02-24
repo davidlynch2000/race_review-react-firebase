@@ -3,6 +3,8 @@ import {BrowserRouter,Switch, Route} from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import LandingPage from './components/landingpage/LandingPage';
 import RaceReport from './components/races/RaceReport';
+import Signin from './components/authentication/SignIn';
+import Signup from './components/authentication/SignUp';
 
 class App extends Component {
   render() {
@@ -13,6 +15,8 @@ class App extends Component {
           <Switch >
             <Route exact path='/' component={LandingPage} />
             <Route path='/racereport/:id' component={RaceReport} />
+            <Route path='/signin' component={Signin}/>
+            <Route path='/signup' component={Signup}/>
           </Switch>
         </div>
       </BrowserRouter>
