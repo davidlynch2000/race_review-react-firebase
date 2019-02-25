@@ -9,9 +9,11 @@ class Signin extends Component{
         e.preventDefault();
     }
     changeHandler = (e) =>{
-        console.log(e.target.value);
-        console.log(e.target.id);
         e.preventDefault();
+        this.setState({
+            ...this.state,
+            [e.target.id]:e.target.value,
+        });
     }
     render(){
         return(
