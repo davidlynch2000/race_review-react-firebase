@@ -1,17 +1,21 @@
 import React from 'react';
+import './Notifications.css';
 
 const Notifications = () =>{
     return(
         <div className='section'>
-            <p>
-                Another
-            </p>
-            <p>
-                And Another
-            </p>
-            <p>
-                And Another
-            </p>
+            <div className='notifications'>
+                <p>Another</p>
+                <p>By Someone</p>
+            </div>
+            <div className='notifications'>
+                <p>And Another</p>
+                <p>By Someone</p>
+            </div>
+            <div className='notifications'>
+                <p>And Another</p>
+                <p>By Someone</p>
+            </div>
         </div>
     );
 };
