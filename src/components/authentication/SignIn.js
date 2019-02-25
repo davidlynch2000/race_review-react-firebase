@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './SignIn.css';
 
 class Signin extends Component{
     state = {
@@ -18,10 +19,10 @@ class Signin extends Component{
     render(){
         return(
             <div className='container section'>
-                <div className='row'>
-                    <h2 className='col m6 s12 offset-m3 teal-text text-lighten-4'>Sign In</h2>
-                </div>
                 <form onSubmit={this.submitHandler}>
+                    <div className='row'>
+                        <h2 className='col m6 s12 offset-m3 teal-text text-lighten-4'>Sign In</h2>
+                    </div>
                     <div className='row'>
                         <div className='input-field col m6 s12 offset-m3'>
                             <input id='email' className='validate' type='email' onChange={this.changeHandler}/>

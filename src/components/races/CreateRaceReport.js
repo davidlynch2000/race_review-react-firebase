@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import './CreateRaceReport.css';
 
 class CreateRaceReport extends Component{
 
@@ -24,7 +25,7 @@ class CreateRaceReport extends Component{
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                <div className='container section'>
+                <div  className='container section'>
                     <div className='row'>
                         <h2 className='teal-text text-lighten-4 col m6 s12 offset-m3'>New Race Report</h2>
                     </div>
