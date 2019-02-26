@@ -1,12 +1,13 @@
 import React from 'react';
+import './RaceSummary.css';
 
-const RaceSummary = (props) =>{
+const RaceSummary = ({review}) =>{
     return(
         <div className='card'>
-            <span className='card-title'>CapTex 2014</span>
-            <p>Keith got run over by a motorcycle</p>
-            <p>D-Ran-Is-Sore(ish) Wrecks</p>
-            <p>{props.date}</p>
+            <span className='card-title'>{review.title}</span>
+            <p>{review.content}</p>
+            <p>{review.author}</p>
+            <p>{review.date.toLocaleDateString()}</p>
         </div>
     );
 }

@@ -1,15 +1,15 @@
 import React from 'react';
 import RaceSummary from '../races/RaceSummary';
 
-const RaceList = () =>{
-
-    let date = new Date();
+const RaceList = (props) =>{
+    const {raceReviews:reviews} = props.raceReviews;
     return(
         <div className='section'>
-            <RaceSummary date={date.toLocaleDateString()}/>
-            <RaceSummary date={date.toLocaleDateString()}/>
-            <RaceSummary date={date.toLocaleDateString()}/>
-            <RaceSummary date={date.toLocaleDateString()}/>
+            {reviews && reviews.map(review=>{
+                return(
+                    <RaceSummary review={review} key={review.id}/>
+                );
+            })}
         </div>
     );
 };
