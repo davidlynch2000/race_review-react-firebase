@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import './CreateRaceReport.css';
+import {connect} from 'react-redux';
+import {createRaceReport} from '../../ActionCreators/RaceReportActionCreator';
 
 class CreateRaceReport extends Component{
 
@@ -20,6 +22,7 @@ class CreateRaceReport extends Component{
 
     handleSubmit = (e) =>{
         e.preventDefault();
+        this.props.createRR(this.state);
     };
     render(){
         return(
@@ -64,4 +67,10 @@ class CreateRaceReport extends Component{
     }
 }
 
-export default CreateRaceReport;
+const mapDispatchToProps = (dispatch) =>{
+    return({
+        createRR:(raceReport) => dispatch(createRaceReport(raceReport)),
+    });
+}
+
+export default connect(null,mapDispatchToProps)(CreateRaceReport);
