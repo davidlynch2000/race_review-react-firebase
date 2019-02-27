@@ -5,9 +5,9 @@ const RaceSummary = ({review}) =>{
     return(
         <div className='card'>
             <span className='card-title'>{review.title}</span>
-            <p>{review.content}</p>
+            <p>{review.summary}</p>
             <p>{review.author}</p>
-            <p>{review.date.toLocaleDateString()}</p>
+            <p>{review.created.toLocaleDateString()}</p>
         </div>
     );
 }

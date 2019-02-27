@@ -6,9 +6,9 @@ import {createRaceReport} from '../../ActionCreators/RaceReportActionCreator';
 class CreateRaceReport extends Component{
 
     state = {
-        swim_review:'',
-        bike_review:'',
-        run_review:'',
+        swimreview:'',
+        bikereview:'',
+        runreview:'',
         summary:'',
     };
 
@@ -44,16 +44,16 @@ class CreateRaceReport extends Component{
                         <label htmlFor='summary'>Summary</label>
                     </div>
                     <div className='input-field'>
-                        <textarea id='swim_review' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='swim_review'>Swim</label>
+                        <textarea id='swimreview' onChange={this.handleChange} className='materialize-textarea'></textarea>
+                        <label htmlFor='swimreview'>Swim</label>
                     </div>
                     <div className='input-field'>
-                        <textarea id='bike_review' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='bike_review'>Bike</label>
+                        <textarea id='bikereview' onChange={this.handleChange} className='materialize-textarea'></textarea>
+                        <label htmlFor='bikereview'>Bike</label>
                     </div>                
                     <div className='input-field'>
-                        <textarea id='run_review' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='run_review'>Run</label>
+                        <textarea id='runreview' onChange={this.handleChange} className='materialize-textarea'></textarea>
+                        <label htmlFor='runreview'>Run</label>
                     </div>
                     <div className='row'>
                         <div className='input-field col m2 s4 offset-m5'>
