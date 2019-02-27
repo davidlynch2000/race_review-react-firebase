@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import RaceList from './RaceList';
 import Notifications from './Notifications';
 import {connect} from 'react-redux';
+import {firestoreConnect} from 'react-redux-firebase';
+import {compose} from 'redux';
 
 class LandingPage extends Component{
     render(){
@@ -18,12 +20,17 @@ class LandingPage extends Component{
             </div>
         );
     }
-
 }
+
 const mapStateToProps = (state) => {
     return {
-        raceReviews: state.raceReviews,
+        raceReviews: state.firestore.ordered.racereports,
     };
-
 };
-export default connect(mapStateToProps)(LandingPage);
+
+export default compose(
+    connect(mapStateToProps), 
+    firestoreConnect([
+        {collection:'racereports'}
+    ])
+)(LandingPage);
