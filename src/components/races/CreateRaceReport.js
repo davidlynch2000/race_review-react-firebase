@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import './CreateRaceReport.css';
 import {connect} from 'react-redux';
-import {createRaceReport} from '../../ActionCreators/RaceReportActionCreator';
+import {createRaceReport} from '../../ActionCreators/RaceReportActionCreators';
 
 class CreateRaceReport extends Component{
 

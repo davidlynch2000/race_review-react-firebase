@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './SignIn.css';
+import {signInAction} from '../../ActionCreators/AuthActionCreators';
+import {connect} from 'react-redux';
 
 class Signin extends Component{
     state = {
@@ -8,6 +10,7 @@ class Signin extends Component{
     }
     submitHandler = (e) =>{
         e.preventDefault();
+        this.props.signIn(this.state);
     }
     changeHandler = (e) =>{
         e.preventDefault();
@@ -21,7 +24,7 @@ class Signin extends Component{
             <div className='container section'>
                 <form onSubmit={this.submitHandler}>
                     <div className='row'>
-                        <h2 className='col m6 s12 offset-m3 teal-text text-lighten-4'>Sign In</h2>
+                        <h2 className='col m6 s12 offset-m3 teal-text text-lighten-4'>Log In</h2>
                     </div>
                     <div className='row'>
                         <div className='input-field col m6 s12 offset-m3'>
@@ -40,10 +43,25 @@ class Signin extends Component{
                             <button className='teal lighten-4 flat' type="submit">Submit</button>
                         </div>
                     </div>
+                    <div className='red-text center'>{this.props.authErr ? this.props.authErr.message: null} </div>
                 </form>
             </div>
         );
     }
 }
 
-export default Signin;
+const mapStateToProps = (state) =>{
+    return{
+        authErr:state.auth.authErr,
+    };
+};
+
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        signIn:(credentials) =>{
+            dispatch(signInAction(credentials));
+        },
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
