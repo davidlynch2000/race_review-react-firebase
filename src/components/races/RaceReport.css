@@ -1,0 +1,22 @@
+.card{
+    padding:0px 10px 30px 10px;
+}
+
+.title{
+    text-align: center;
+}
+
+.card-title{
+    font-size:xx-large !important;
+}
+
+.author{
+    float:left;
+    color:lightslategray;
+}
+
+.date{
+    float:right;
+    color:lightslategray;
+}
+
