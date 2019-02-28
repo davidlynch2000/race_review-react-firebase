@@ -26,5 +26,5 @@ export const signOutAction = () =>{
         .catch(err =>{
             dispatch({type:'LOGOUT_ERROR'});
         });
-    }
+    };
 }
