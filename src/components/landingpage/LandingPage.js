@@ -4,9 +4,14 @@ import Notifications from './Notifications';
 import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
+import {Redirect} from 'react-router-dom';
 
 class LandingPage extends Component{
     render(){
+
+        if(!this.props.auth.uid){
+            return <Redirect to='/signin'/>;
+        }
         return(
             <div className='container'>
                 <div className='row'>
@@ -25,6 +30,7 @@ class LandingPage extends Component{
 const mapStateToProps = (state) => {
     return {
         raceReviews: state.firestore.ordered.racereports,
+        auth: state.firebase.auth,
     };
 };
 

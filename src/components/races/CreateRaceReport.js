@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import './CreateRaceReport.css';
 import {connect} from 'react-redux';
 import {createRaceReport} from '../../ActionCreators/RaceReportActionCreators';
+import {Redirect} from 'react-router-dom';
 
 class CreateRaceReport extends Component{
 
@@ -25,6 +26,9 @@ class CreateRaceReport extends Component{
         this.props.createRR(this.state);
     };
     render(){
+        if(!this.props.auth.uid){
+            return <Redirect to='/signin'/>
+        }
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -67,10 +71,15 @@ class CreateRaceReport extends Component{
     }
 }
 
+const mapStateToProps =(state) =>{
+    return({
+        auth:state.firebase.auth,
+    });
+}
 const mapDispatchToProps = (dispatch) =>{
     return({
         createRR:(raceReport) => dispatch(createRaceReport(raceReport)),
     });
 }
 
-export default connect(null,mapDispatchToProps)(CreateRaceReport);
+export default connect(mapStateToProps,mapDispatchToProps)(CreateRaceReport);
