@@ -18,7 +18,7 @@ class LandingPage extends Component{
                     <div className='col s12 m8'>
                         <RaceList raceReviews={this.props.raceReviews}/>
                     </div>
-                    <div className='col s12 m2 offset-m2'>
+                    <div className='col s12 m3 offset-m1'>
                         <Notifications/>
                     </div>
                 </div>
