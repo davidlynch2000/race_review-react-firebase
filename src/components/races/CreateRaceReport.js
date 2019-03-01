@@ -24,6 +24,7 @@ class CreateRaceReport extends Component{
     handleSubmit = (e) =>{
         e.preventDefault();
         this.props.createRR(this.state);
+        this.props.history.push('/');
     };
     render(){
         if(!this.props.auth.uid){
