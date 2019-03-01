@@ -1,20 +1,23 @@
 import React from 'react';
 import './Notifications.css';
 
-const Notifications = () =>{
+const Notifications = (props) =>{
+    const activities = props.activities;
     return(
         <div className='section'>
-            <div className='notifications'>
-                <p>Another</p>
-                <p>By Someone</p>
-            </div>
-            <div className='notifications'>
-                <p>And Another</p>
-                <p>By Someone</p>
-            </div>
-            <div className='notifications'>
-                <p>And Another</p>
-                <p>By Someone</p>
+            <div className='card'>
+                <div className='card-content'>
+                    <span className='card-title'>Activity</span>
+                    <ul> 
+                        {activities && activities.map(activity=>{
+                            return(
+                                <li key={activity.id}>
+                                    <p className='blue-text'>{activity.content}</p>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
             </div>
         </div>
     );
