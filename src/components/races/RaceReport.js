@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import './RaceReport.css';
+import {Redirect} from 'react-router-dom';
 
 const RaceReport = (props) =>{
-    console.log(props.match.params.id);
-    console.log(props.review);
     const {review} = props;
+    if(!props.auth.uid){return (<Redirect to='/signin'/>)};
     return(
         <div className='container section'>
             <div className='card'>
@@ -29,10 +29,11 @@ const RaceReport = (props) =>{
     );
 }
 const mapStateToProps = (state,ownProps) =>{
-    const racereports = state.firestore.date.racereports;
+    const racereports = state.firestore.data.racereports;
     const report = racereports ? racereports[ownProps.match.params.id]: null;
     return{
         review : report,
+        auth: state.firebase.auth,
     };
 }
 export default compose(

@@ -1,5 +1,8 @@
 import React,{Component} from 'react';
 import './SignUp.css'
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
+import {signUpAction} from '../../ActionCreators/AuthActionCreators';
 
 class SignUp extends Component{
     state = {
@@ -10,6 +13,7 @@ class SignUp extends Component{
     }
     handleSubmit = (e) =>{
         e.preventDefault();
+        this.props.signUp(this.state);
     }
     handleChange = (e) =>{
         e.preventDefault();
@@ -19,6 +23,9 @@ class SignUp extends Component{
         });
     }
     render(){
+        if(this.props.auth.uid){
+            return(<Redirect to='/'/>);
+        }
         return(
             <div className='container section'>
                 <form onSubmit={this.handleSubmit}>
@@ -39,6 +46,12 @@ class SignUp extends Component{
                     </div>
                     <div className='row'>
                         <div className='input-field col m6 s12 offset-m3'>
+                            <input id='username' type='text' onChange={this.handleChange}/>
+                            <label htmlFor='username'> User Name (Appears On Race Reports)</label>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='input-field col m6 s12 offset-m3'>
                             <input id='email' className='validate' type='email' onChange={this.handleChange}/>
                             <label htmlFor='email'> Email</label>
                         </div>
@@ -54,10 +67,26 @@ class SignUp extends Component{
                             <button className='teal lighten-4' type='submit'>Submit</button>
                         </div>
                     </div>
+                    <div className='row'>
+                        <p className='red-text center'>{this.props.authErr}</p>
+                    </div>
                 </form>
             </div>
         )
     }
 }
 
-export default SignUp;
+const mapStateToProps = (state) =>{
+    return{
+        auth:state.firebase.auth,
+        authErr: state.auth.authErr,
+    }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        signUp:(newuser) => dispatch(signUpAction(newuser)),
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SignUp);
