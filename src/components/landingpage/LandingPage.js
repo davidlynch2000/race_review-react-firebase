@@ -19,7 +19,7 @@ class LandingPage extends Component{
                         <RaceList raceReviews={this.props.raceReviews}/>
                     </div>
                     <div className='col s12 m3 offset-m1'>
-                        <Notifications/>
+                        <Notifications activities={this.props.activities}/>
                     </div>
                 </div>
             </div>
@@ -31,12 +31,14 @@ const mapStateToProps = (state) => {
     return {
         raceReviews: state.firestore.ordered.racereports,
         auth: state.firebase.auth,
+        activities: state.firestore.ordered.activities,
     };
 };
 
 export default compose(
     connect(mapStateToProps), 
     firestoreConnect([
-        {collection:'racereports'}
+        {collection:'racereports', orderBy:['created','desc']},
+        {collection:'activities', limit:3, orderBy:['time','desc']},
     ])
 )(LandingPage);
