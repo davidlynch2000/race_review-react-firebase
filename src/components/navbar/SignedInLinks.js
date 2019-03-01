@@ -4,7 +4,6 @@ import {signOutAction} from '../../ActionCreators/AuthActionCreators';
 import {connect} from 'react-redux';
 
 const SignedInLinks = (props) =>{
-    
     return(
         <ul className='right'>
             <li><NavLink to='/createracereport'>Create Race Report</NavLink></li>
