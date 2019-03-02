@@ -46,19 +46,19 @@ class CreateRaceReport extends Component{
                     </div>
                     <div className='input-field'>
                         <textarea id='summary' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='summary'>Summary</label>
+                        <label htmlFor='summary' className='textarea-label' >Summary</label>
                     </div>
                     <div className='input-field'>
                         <textarea id='swimreview' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='swimreview'>Swim</label>
+                        <label htmlFor='swimreview' className='textarea-label'>Swim</label>
                     </div>
                     <div className='input-field'>
                         <textarea id='bikereview' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='bikereview'>Bike</label>
+                        <label htmlFor='bikereview' className='textarea-label'>Bike</label>
                     </div>                
                     <div className='input-field'>
                         <textarea id='runreview' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='runreview'>Run</label>
+                        <label htmlFor='runreview' className='textarea-label'>Run</label>
                     </div>
                     <div className='row'>
                         <div className='input-field col m2 s4 offset-m5'>
