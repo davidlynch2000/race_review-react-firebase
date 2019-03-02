@@ -1,9 +1,31 @@
 form{
     background:whitesmoke;
     margin:60px;
-    align-items:center;    
+    align-items:center;   
 }
 
 .input-field{
     margin:20px;
+}
+
+.materialize-textarea{
+    height:8rem !important;
+}
+
+.input-field > .textarea-label {
+    color: #9e9e9e;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    cursor: text;
+    -webkit-transition: color .4s ease-out, -webkit-transform .4s ease-out;
+    transition: color .4s ease-out, -webkit-transform .4s ease-out;
+    transition: transform .4s ease-out, color .4s ease-out;
+    transition: transform .4s ease-out, color .4s ease-out, -webkit-transform .4s ease-out;
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+    text-align: initial;
+    -webkit-transform: translateY(6rem);
+    transform: translateY(6rem);
 }
