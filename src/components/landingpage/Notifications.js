@@ -11,7 +11,7 @@ const Notifications = (props) =>{
                     <ul> 
                         {activities && activities.map(activity=>{
                             return(
-                                <li key={activity.id}>
+                                <li className='section' key={activity.id}>
                                     <p className='blue-text'>{activity.content}</p>
                                 </li>
                             );
