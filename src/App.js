@@ -6,7 +6,6 @@ import RaceReport from './components/races/RaceReport';
 import Signin from './components/authentication/SignIn';
 import Signup from './components/authentication/SignUp';
 import CreateRaceReport from './components/races/CreateRaceReport';
-import './App.css';
 
 class App extends Component {
   render() {
