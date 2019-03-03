@@ -13,9 +13,9 @@ class LandingPage extends Component{
             return <Redirect to='/signin'/>;
         }
         return(
-            <div className='container'>
+            <div className='section'>
                 <div className='row'>
-                    <div className='col s12 m8'>
+                    <div className='col s12 m6 offset-m1'>
                         <RaceList raceReviews={this.props.raceReviews}/>
                     </div>
                     <div className='col s12 m3 offset-m1'>

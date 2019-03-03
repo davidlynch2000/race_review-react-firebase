@@ -26,7 +26,7 @@ class Signin extends Component{
             <div className='container section'>
                 <form onSubmit={this.submitHandler}>
                     <div className='row'>
-                        <h2 className='col m6 s12 offset-m3 teal-text text-lighten-4'>Log In</h2>
+                        <h2 className='col m6 s12 offset-m3 teal-text text-lighten-4 center'>Log In</h2>
                     </div>
                     <div className='row'>
                         <div className='input-field col m6 s12 offset-m3'>
@@ -41,7 +41,7 @@ class Signin extends Component{
                         </div>
                     </div>
                     <div className='row'>
-                        <div className='input-field col m6 s12 offset-m3'>
+                        <div className='input-field col m6 s12 offset-m3 center'>
                             <button className='teal lighten-4 flat' type="submit">Submit</button>
                         </div>
                     </div>
