@@ -30,7 +30,7 @@ class SignUp extends Component{
             <div className='container section'>
                 <form onSubmit={this.handleSubmit}>
                     <div className='row'>
-                        <h2 className='col m6 s12 offset-m3 teal-text text-lighten-4'>Sign Up</h2>
+                        <h2 className='col m6 s12 offset-m3 teal-text text-lighten-4 center'>Sign Up</h2>
                     </div>
                     <div className='row'>
                         <div className='input-field col m6 s12 offset-m3'>
@@ -63,7 +63,7 @@ class SignUp extends Component{
                         </div>
                     </div>
                     <div className='row'>
-                        <div className='input-field col m6 s12 offset-m3'>
+                        <div className='input-field col m6 s12 offset-m3 center'>
                             <button className='teal lighten-4' type='submit'>Submit</button>
                         </div>
                     </div>
