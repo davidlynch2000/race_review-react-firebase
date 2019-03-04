@@ -7,8 +7,12 @@ const RaceSummary = ({review}) =>{
         <div className='card teal-text text-lighten-3' >
             <span className='card-title '>{review.title}</span>
             <p>{review.summary}</p>
-            <p>{review.author}</p>
-            <p>{review.created.toLocaleDateString()}</p>
+            <div>
+                <span className='left'>{review.author}</span>
+            </div>
+            <div>
+                <span className='right'>{review.created.toLocaleDateString()}</span>
+            </div>
         </div>
     );
 }
