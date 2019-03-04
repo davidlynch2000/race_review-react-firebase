@@ -10,7 +10,7 @@ export const signInAction = (credentials) =>{
             dispatch({type:'LOGIN_SUCCESS'});
         })
         .catch((err) =>{
-            dispatch({type:'LOGIN_ERROR',payload:err});
+            dispatch({type:'LOGIN_ERROR',err});
         });
     });
 }

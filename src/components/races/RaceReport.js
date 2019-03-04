@@ -4,6 +4,7 @@ import {compose} from 'redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import './RaceReport.css';
 import {Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const RaceReport = (props) =>{
     const {review} = props;
@@ -28,6 +29,12 @@ const RaceReport = (props) =>{
         </div>
     );
 }
+
+RaceReport.propTypes = {
+    review: PropTypes.object,
+    auth: PropTypes.object,    
+}
+
 const mapStateToProps = (state,ownProps) =>{
     const racereports = state.firestore.data.racereports;
     const report = racereports ? racereports[ownProps.match.params.id]: null;
@@ -36,6 +43,7 @@ const mapStateToProps = (state,ownProps) =>{
         auth: state.firebase.auth,
     };
 }
+
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([

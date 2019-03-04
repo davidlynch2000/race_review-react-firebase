@@ -1,6 +1,6 @@
 import React from 'react';
 import './RaceSummary.css';
-
+import PropTypes from 'prop-types';
 
 const RaceSummary = ({review}) =>{
     return(
@@ -11,6 +11,10 @@ const RaceSummary = ({review}) =>{
             <p>{review.created.toLocaleDateString()}</p>
         </div>
     );
+}
+
+RaceSummary.propTypes = {
+    review: PropTypes.object,
 }
 
 export default RaceSummary;

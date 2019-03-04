@@ -1,5 +1,5 @@
 const initState = {
-    authErr: "",
+    authErr: {},
 };
 
 const authReducer = (state = initState,action) =>{
@@ -7,13 +7,13 @@ const authReducer = (state = initState,action) =>{
         case 'LOGIN_SUCCESS':{
             return {
                 ...state,
-                authErr:'',
+                authErr:{},
             };
         }
         case 'LOGIN_ERROR':{
             return{
                 ...state,
-                authErr:action.payload,
+                authErr:action.err,
             };
         }
         case 'LOGOUT_SUCCESS':{
@@ -29,19 +29,19 @@ const authReducer = (state = initState,action) =>{
         case 'SIGNUP_SUCCESS':{
             return{
                 ...state,
-                authErr:'',
+                authErr:'{}',
             };
         }
         case 'SIGNUP_ERROR':{
             return{
                 ...state,
-                authErr:action.err.message,
+                authErr:action.err,
             };
         }
         default:{
             return{
                 ...state,
-                authErr:'',
+                authErr:{},
             };
         }
     }
