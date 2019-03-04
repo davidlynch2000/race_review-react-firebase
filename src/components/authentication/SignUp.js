@@ -3,6 +3,7 @@ import './SignUp.css'
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {signUpAction} from '../../ActionCreators/AuthActionCreators';
+import PropTypes from 'prop-types';
 
 class SignUp extends Component{
     state = {
@@ -68,12 +69,18 @@ class SignUp extends Component{
                         </div>
                     </div>
                     <div className='row'>
-                        <p className='red-text center'>{this.props.authErr}</p>
+                        <p className='red-text center'>{this.props.authErr.message}</p>
                     </div>
                 </form>
             </div>
         )
     }
+}
+
+SignUp.propTypes = {
+    auth:PropTypes.object,
+    authErr:PropTypes.object,
+    signUp:PropTypes.func,
 }
 
 const mapStateToProps = (state) =>{

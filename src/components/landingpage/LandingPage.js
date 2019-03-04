@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
 import {Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class LandingPage extends Component{
     render(){
@@ -26,6 +27,12 @@ class LandingPage extends Component{
         );
     }
 }
+
+LandingPage.propTypes = {
+    raceReviews: PropTypes.array,
+    activities: PropTypes.array,
+    auth: PropTypes.object,
+};
 
 const mapStateToProps = (state) => {
     return {

@@ -3,6 +3,7 @@ import './CreateRaceReport.css';
 import {connect} from 'react-redux';
 import {createRaceReport} from '../../ActionCreators/RaceReportActionCreators';
 import {Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class CreateRaceReport extends Component{
 
@@ -72,11 +73,18 @@ class CreateRaceReport extends Component{
     }
 }
 
+CreateRaceReport.propTypes = {
+    auth: PropTypes.object,
+    createRR: PropTypes.func,
+    history: PropTypes.object,
+}
+
 const mapStateToProps =(state) =>{
     return({
         auth:state.firebase.auth,
     });
 }
+
 const mapDispatchToProps = (dispatch) =>{
     return({
         createRR:(raceReport) => dispatch(createRaceReport(raceReport)),

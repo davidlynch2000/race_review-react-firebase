@@ -3,6 +3,7 @@ import './SignIn.css';
 import {signInAction} from '../../ActionCreators/AuthActionCreators';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Signin extends Component{
     state = {
@@ -50,6 +51,12 @@ class Signin extends Component{
             </div>
         );
     }
+}
+
+Signin.propTypes = {
+    authErr:PropTypes.object,
+    auth:PropTypes.object,
+    signIn:PropTypes.func,
 }
 
 const mapStateToProps = (state) =>{

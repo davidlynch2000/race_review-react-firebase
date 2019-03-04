@@ -1,6 +1,7 @@
 import React from 'react';
 import RaceSummary from '../races/RaceSummary';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const RaceList = (props) =>{
     const reviews = props.raceReviews;
@@ -16,5 +17,9 @@ const RaceList = (props) =>{
         </div>
     );
 };
+
+RaceList.propTypes = {
+    raceReviews: PropTypes.array,
+}
 
 export default RaceList;
