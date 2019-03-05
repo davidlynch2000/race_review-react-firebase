@@ -7,7 +7,8 @@ const SignedInLinks = (props) =>{
     return(
         <ul className='right'>
             <li><NavLink to='/createracereport'>Create Race Report</NavLink></li>
-            <li><a href='/' onClick={props.signOut}>Log Out</a></li>
+            <li><a href='/signin' onClick={props.signOut}>Log Out</a></li>
+            <li><a href="/settings"><i className="material-icons">settings</i></a></li>
         </ul>
     );
 };

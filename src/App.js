@@ -6,6 +6,7 @@ import RaceReport from './components/races/RaceReport';
 import Signin from './components/authentication/SignIn';
 import Signup from './components/authentication/SignUp';
 import CreateRaceReport from './components/races/CreateRaceReport';
+import Settings from './components/authentication/Settings';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route path='/signin' component={Signin}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/createracereport' component={CreateRaceReport}/>
+            <Route path='/settings' component={Settings}/>
           </Switch>
         </div>
       </BrowserRouter>
