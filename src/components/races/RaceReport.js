@@ -23,8 +23,11 @@ const RaceReport = (props) =>{
                 <p>{review.runreview}</p>
                 <h4> Summary </h4>
                 <p>{review.summary}</p>
+                <div className='row editButton'><button className='teal lighten-4 input-field col m2 s4 offset-m5'>Edit</button></div>
                 <span className='author'>{review.author}</span>
                 <span className='date'>{new Date(review.created.seconds*1000).toLocaleDateString()}</span>
+                {/* <div><span ><button className='center'>Edit</button></span></div> */}
+                
             </div>
         </div>
     );
