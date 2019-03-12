@@ -7,6 +7,7 @@ import Signin from './components/authentication/SignIn';
 import Signup from './components/authentication/SignUp';
 import CreateRaceReport from './components/races/CreateRaceReport';
 import Settings from './components/authentication/Settings';
+import EditRaceReport from './components/races/EditRaceReport';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Switch >
             <Route exact path='/' component={LandingPage} />
             <Route path='/racereport/:id' component={RaceReport} />
+            <Route path='/editracereport/:id' component={EditRaceReport} />
             <Route path='/signin' component={Signin}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/createracereport' component={CreateRaceReport}/>
