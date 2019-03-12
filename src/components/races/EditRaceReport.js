@@ -7,10 +7,11 @@ import PropTypes from 'prop-types';
 
 class EditRaceReport extends Component{
     state = {
-        swimreview:'',
-        bikereview:'',
-        runreview:'',
-        summary:'',
+        swimreview:'a',
+        bikereview:'b',
+        runreview:'c',
+        summary:'d',
+        title: 'e',
     };
 
     handleChange = (e) =>{
@@ -19,6 +20,7 @@ class EditRaceReport extends Component{
             ...this.state,
             [e.target.id]:e.target.value,
         });
+        console.log(this.props);
     }
 
     handleSubmit = (e) =>{
@@ -26,6 +28,22 @@ class EditRaceReport extends Component{
         this.props.editRR(this.state);
         this.props.history.push('/');
     };
+
+    setInitialStateValues =() =>{
+        this.setState({
+            swimreview:this.props.review.swimreview,
+            bikereview:this.props.review.bikereview,
+            runreview:this.props.review.runreview,
+            summary:this.props.review.summary,
+            title:this.props.review.title,
+        });
+    }
+
+    componentDidMount = () =>{
+        this.setInitialStateValues();
+    }
+
+
     render(){
         if(!this.props.auth.uid){
             return <Redirect to='/signin'/>
@@ -40,25 +58,25 @@ class EditRaceReport extends Component{
 
                     <div className='row'>
                         <div className='input-field col m8 s12 offset-m2'>
-                            <input id='title' onChange={this.handleChange} type='text' style={{fontSize:'x-large'}}/>
+                            <input id='title' value={this.state.title} onChange={this.handleChange} type='text' style={{fontSize:'x-large'}}/>
                             <label htmlFor='title'>Title</label>
                         </div>
                     </div>
                     <div className='input-field'>
-                        <textarea id='summary' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='summary' className='textarea-label' >Summary</label>
+                        <textarea id='summary' value={this.state.summary} onChange={this.handleChange} className='materialize-textarea'></textarea>
+                        <label htmlFor='summary' >Summary</label>
                     </div>
                     <div className='input-field'>
-                        <textarea id='swimreview' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='swimreview' className='textarea-label'>Swim</label>
+                        <textarea id='swimreview' value={this.state.swimreview} onChange={this.handleChange} className='materialize-textarea'></textarea>
+                        <label htmlFor='swimreview'>Swim</label>
                     </div>
                     <div className='input-field'>
-                        <textarea id='bikereview' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='bikereview' className='textarea-label'>Bike</label>
+                        <textarea id='bikereview' value={this.state.bikereview} onChange={this.handleChange} className='materialize-textarea'></textarea>
+                        <label htmlFor='bikereview'>Bike</label>
                     </div>                
                     <div className='input-field'>
-                        <textarea id='runreview' onChange={this.handleChange} className='materialize-textarea'></textarea>
-                        <label htmlFor='runreview' className='textarea-label'>Run</label>
+                        <textarea id='runreview' value={this.state.runreview} onChange={this.handleChange} className='materialize-textarea'></textarea>
+                        <label htmlFor='runreview' >Run</label>
                     </div>
                     <div className='row'>
                         <div className='input-field col m2 s4 offset-m5'>
@@ -78,8 +96,11 @@ EditRaceReport.propTypes = {
     history: PropTypes.object,
 }
 
-const mapStateToProps =(state) =>{
+const mapStateToProps =(state, ownProps) =>{
+    const racereports = state.firestore.data.racereports;
+    const report = racereports ? racereports[ownProps.match.params.id]: null;
     return({
+        review : report,
         auth:state.firebase.auth,
     });
 }
