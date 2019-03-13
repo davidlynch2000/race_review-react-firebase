@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 
 class EditRaceReport extends Component{
     state = {
-        swimreview:'a',
-        bikereview:'b',
-        runreview:'c',
-        summary:'d',
-        title: 'e',
+        swimreview:'',
+        bikereview:'',
+        runreview:'',
+        summary:'',
+        title: '',
     };
 
     handleChange = (e) =>{
@@ -20,12 +20,11 @@ class EditRaceReport extends Component{
             ...this.state,
             [e.target.id]:e.target.value,
         });
-        console.log(this.props);
     }
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.props.editRR(this.state);
+        this.props.editRR(this.state,this.props.match.params.id);
         this.props.history.push('/');
     };
 
@@ -107,7 +106,7 @@ const mapStateToProps =(state, ownProps) =>{
 
 const mapDispatchToProps = (dispatch) =>{
     return({
-        editRR:(raceReport) => dispatch(editRaceReport(raceReport)),
+        editRR:(raceReport,id) => dispatch(editRaceReport(raceReport,id)),
     });
 }
 

@@ -19,23 +19,22 @@ export const createRaceReport = (raceReport) =>{
         };
 }
 
-export const editRaceReport = (raceReport) =>{
+export const editRaceReport = (raceReport,raceReportId) =>{
     return (dispatch,getState,{getFirebase, getFirestore} ) => {
             const firestore = getFirestore();
             const username = getState().firebase.profile.username;
             const userid = getState().firebase.auth.uid;
-            firestore.collection('racereports').add({
+            firestore.doc(`racereports/${raceReportId}`).update({
                 ...raceReport,
                 author:username,
                 authorid:userid,
-                created: new Date(),
+                created: new Date(),                
             })
             .then(()=>{
-                dispatch({type:'CREATE_RACEREPORT',raceReport:{...raceReport,id:12,created:new Date()},});
+                dispatch({type:'EDIT_RACEREPORT',raceReport:{...raceReport,created:new Date()},});
             })
             .catch((err)=>{
-                dispatch({type:'CREATE_RACEREPORT_ERROR'});
+                dispatch({type:'EDIT_RACEREPORT_ERROR'});
             });
-
         };
 }

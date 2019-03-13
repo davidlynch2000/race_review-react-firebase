@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom';
 const RaceReport = (props) =>{
     const {review} = props;
     if(!props.auth.uid){return (<Redirect to='/signin'/>)};
+    const editable = review.authorid === props.auth.uid;
     return(
         <div className='container section'>
             <div className='card'>
@@ -24,11 +25,18 @@ const RaceReport = (props) =>{
                 <p>{review.runreview}</p>
                 <h4> Summary </h4>
                 <p>{review.summary}</p>
-                <div className='row editButton'>
-                    <Link to={'/editracereport/'+props.match.params.id}>
-                        <button className='teal lighten-4 input-field col m2 s4 offset-m5'>Edit</button>
-                    </Link>
-                </div>
+                {editable ? 
+                    (
+                    <div className='row editButton'>
+                        <Link to={'/editracereport/'+props.match.params.id}>
+                            <button className='teal lighten-4 input-field col m2 s4 offset-m5'>Edit</button>
+                        </Link>
+                    </div>
+                    )
+                    :
+                    ('')
+                }
+                
                 <span className='author'>{review.author}</span>
                 <span className='date'>{new Date(review.created.seconds*1000).toLocaleDateString()}</span>                
             </div>
