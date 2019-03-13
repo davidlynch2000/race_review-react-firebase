@@ -1,0 +1,20 @@
+form{
+    background:whitesmoke;
+    margin:60px;
+    align-items:center;   
+}
+
+.input-field{
+    margin:20px;
+}
+
+.materialize-textarea{
+    height:8rem !important;
+}
+
+.input-field > label {
+    -webkit-transform: translateY(-14px) scale(0.8);
+    transform: translateY(-14px) scale(0.8);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}

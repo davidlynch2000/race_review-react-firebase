@@ -17,3 +17,6 @@ Create RR
 
 View RR
 (Main Page) Click one of the existing RRs to view the details of that RR.
+
+Update RR
+(Main Page) Click one of the existing RRs that has been created by the logged in user. Scroll to the bottom of the page. Click the edit button.

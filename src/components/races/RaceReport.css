@@ -20,3 +20,10 @@
     color:lightslategray;
 }
 
+.editButton{
+    padding-top:20px;
+}
+
+button{
+    cursor: pointer;
+}

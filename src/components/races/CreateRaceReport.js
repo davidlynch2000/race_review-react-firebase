@@ -12,6 +12,7 @@ class CreateRaceReport extends Component{
         bikereview:'',
         runreview:'',
         summary:'',
+        title:'',
     };
 
     handleChange = (e) =>{
