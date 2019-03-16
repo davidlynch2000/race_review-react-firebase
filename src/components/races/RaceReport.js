@@ -29,7 +29,10 @@ const RaceReport = (props) =>{
                     (
                     <div className='row editButton'>
                         <Link to={'/editracereport/'+props.match.params.id}>
-                            <button className='teal lighten-4 input-field col m2 s4 offset-m5'>Edit</button>
+                            <button className='teal lighten-4 input-field col l2 m2 s4 offset-l3'>Edit</button>
+                        </Link>
+                        <Link to={'/editracereport/'+props.match.params.id}>
+                            <button className='teal lighten-4 input-field col l2 m2 s4 offset-l2'>Delete</button>
                         </Link>
                     </div>
                     )
