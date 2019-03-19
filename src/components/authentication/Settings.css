@@ -1,5 +1,23 @@
-form{
-    background:whitesmoke;
-    margin-top:60px;
-    padding-bottom:30px;
+.card{
+    padding:0px 10px 30px 10px;
+}
+
+.title{
+    text-align: center;
+}
+
+.card-title{
+    font-size:xx-large !important;
+}
+
+.buttonRow{
+    padding-top:20px;
+}
+
+button{
+    cursor: pointer;
+}
+
+label{
+    color:black !important;
 }
