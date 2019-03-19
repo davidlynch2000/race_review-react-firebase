@@ -20,6 +20,12 @@ const raceReviewReducer = (state = initState,action) =>{
         case 'CREATE_RACEREPORT_ERROR':{
             return state;
         }
+        case 'DELETE_RACEREPORT':{
+            return state;
+        }
+        case 'DELETE_RACEREPORT_ERROR':{
+            return state;
+        }
         default:{
             return state;
         }

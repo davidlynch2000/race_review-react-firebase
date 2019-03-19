@@ -6,6 +6,7 @@ import './RaceReport.css';
 import {Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import DeletionModal from './DeletionModal';
 
 const RaceReport = (props) =>{
     const {review} = props;
@@ -29,14 +30,21 @@ const RaceReport = (props) =>{
                     (
                     <div className='row editButton'>
                         <Link to={'/editracereport/'+props.match.params.id}>
-                            <button className='teal lighten-4 input-field col m2 s4 offset-m5'>Edit</button>
+                            <button 
+                                className='teal lighten-4 input-field col l2 m2 s4 offset-l3 offset-m3'>
+                                    Edit
+                            </button>
                         </Link>
+                        <button
+                            className='teal lighten-4 input-field col l2 m2 s4 offset-l2 offset-m2'>
+                                <DeletionModal id={props.match.params.id} history={props.history} />
+                        </button>
                     </div>
                     )
                     :
                     ('')
                 }
-                
+               
                 <span className='author'>{review.author}</span>
                 <span className='date'>{new Date(review.created.seconds*1000).toLocaleDateString()}</span>                
             </div>
