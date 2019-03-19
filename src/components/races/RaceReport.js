@@ -37,24 +37,14 @@ const RaceReport = (props) =>{
                         </Link>
                         <button
                             className='teal lighten-4 input-field col l2 m2 s4 offset-l2 offset-m2'>
-                                <DeletionModal/>
+                                <DeletionModal id={props.match.params.id} history={props.history} />
                         </button>
                     </div>
                     )
                     :
                     ('')
                 }
-                
-                {/* <div id='deletionModal' className='modal'>
-                    <div className='modal-content'>
-                        <h4>Here We Go</h4>
-                        <p>any</p>
-                    </div>
-                    <div className='modal-footer'>
-                        <a href='/' className='modal-close btn-flat'> Do it</a>
-                    </div>
-                </div> */}
-                
+               
                 <span className='author'>{review.author}</span>
                 <span className='date'>{new Date(review.created.seconds*1000).toLocaleDateString()}</span>                
             </div>

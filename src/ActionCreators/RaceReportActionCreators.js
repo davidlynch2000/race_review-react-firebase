@@ -38,3 +38,16 @@ export const editRaceReport = (raceReport,raceReportId) =>{
             });
         };
 }
+
+export const deleteRaceReport = (raceReportId) =>{
+    return (dispatch,getState,{getFirestore} ) => {
+            const firestore = getFirestore();
+            firestore.doc(`racereports/${raceReportId}`).delete()
+            .then(()=>{
+                dispatch({type:'DELETE_RACEREPORT',});
+            })
+            .catch((err)=>{
+                dispatch({type:'DELETE_RACEREPORT_ERROR'});
+            });
+        };
+}

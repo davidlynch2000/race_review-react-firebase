@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import M from 'materialize-css';
 import './DeletionModal.css';
+import {connect} from 'react-redux';
+import {deleteRaceReport} from '../../ActionCreators/RaceReportActionCreators'
 
 class DeletionModal extends Component{
 
@@ -15,6 +17,13 @@ class DeletionModal extends Component{
         };
         M.Modal.init(this.Modal,opt);
     }
+
+    handleClick = (e) =>{
+        e.preventDefault();
+        this.props.deleteAction(this.props.id);
+        this.props.history.push('/');
+    }
+
     render(){
         return(
             <div>
@@ -36,7 +45,7 @@ class DeletionModal extends Component{
                         <h5>Are you sure you want to permanently delete this race report?</h5>
                     </div>
                     <div className='center'>
-                        <button className='center'>Delete</button>
+                        <input type='button' className='center deleteButton' onClick={this.handleClick} value="Delete"></input>
                     </div>
                 </div>
             </div>
@@ -44,4 +53,12 @@ class DeletionModal extends Component{
     }
 }
 
-export default DeletionModal;
+const mapDispatchToProps = (dispatch) =>{
+
+    return({
+        deleteAction:(id) => dispatch(deleteRaceReport(id)),
+    });
+}
+
+// export default DeletionModal;
+export default connect(null, mapDispatchToProps)(DeletionModal);

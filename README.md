@@ -20,3 +20,6 @@ View RR
 
 Update RR
 (Main Page) Click one of the existing RRs that has been created by the logged in user. Scroll to the bottom of the page. Click the edit button.
+
+Delete RR
+(Main Page) Click one of the existing RRs that has been created by the logged in user. Scroll to the bottom of the page. Click the delete button. On the modal that pops up, click the Delete button.
