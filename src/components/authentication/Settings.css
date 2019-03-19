@@ -10,14 +10,18 @@
     font-size:xx-large !important;
 }
 
-.buttonRow{
-    padding-top:20px;
+.allUserInfo{
+
 }
 
-button{
-    cursor: pointer;
+.editField{
+    margin:15px;
 }
 
-label{
-    color:black !important;
+.editField > span{
+    font-size:1.4em;
+}
+
+.editIcon{
+    font-size:.8em;
 }

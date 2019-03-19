@@ -1,4 +1,5 @@
 import React from 'react';
+import './Settings.css';
 import {connect} from 'react-redux';
 
 const Settings = (props) => {
@@ -9,34 +10,17 @@ const Settings = (props) => {
                 <div className='title'>
                     <span className='card-title'>Settings</span>
                 </div>
-                <div>
-                    <label> Name</label>
-                    <span>{'First Name'}</span><i className="material-icons">edit</i>
-                    <span>{'Last Name'}</span><i className="material-icons">edit</i>
-                </div>
-                <div>
-                    <label> Username </label>
-                    <span>{'Username'}</span><i className="material-icons">edit</i>
-                </div>
-                {/* {editable ? 
-                    (
-                    <div className='row buttonRow'>
-                        <Link to={'/editracereport/'+props.match.params.id}>
-                            <button 
-                                className='teal lighten-4 input-field col l2 m2 s4 offset-l3 offset-m3'>
-                                    Edit
-                            </button>
-                        </Link>
-                        <button
-                            className='teal lighten-4 input-field col l2 m2 s4 offset-l2 offset-m2'>
-                                <DeletionModal id={props.match.params.id} history={props.history} />
-                        </button>
+                <div className='allUserInfo'>
+                    <div className='editField'>
+                        <label> Name: </label>
+                        <span>{'First Name'}</span><i className="material-icons editIcon">edit</i>
+                        <span>{'Last Name'}</span><i className="material-icons editIcon">edit</i>
                     </div>
-                    )
-                    :
-                    ('')
-                } */}
-            
+                    <div className='editField'>
+                        <label> Username: </label>
+                        <span>{'Username'}</span><i className="material-icons editIcon">edit</i>
+                    </div>
+                </div>
             </div>
         </div>
     );
