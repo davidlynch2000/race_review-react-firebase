@@ -13,12 +13,12 @@ const Settings = (props) => {
                 <div className='allUserInfo'>
                     <div className='editField'>
                         <label> Name: </label>
-                        <span>{'First Name'}</span><i className="material-icons editIcon">edit</i>
-                        <span>{'Last Name'}</span><i className="material-icons editIcon">edit</i>
+                        <span>{'First Name'}<i className="material-icons editIcon">edit</i></span>
+                        <span>{'Last Name'}<i className="material-icons editIcon">edit</i></span>
                     </div>
                     <div className='editField'>
                         <label> Username: </label>
-                        <span>{'Username'}</span><i className="material-icons editIcon">edit</i>
+                        <span>{'Username'}<i className="material-icons editIcon">edit</i></span>
                     </div>
                 </div>
             </div>

@@ -23,5 +23,13 @@
 }
 
 .editIcon{
-    font-size:.8em;
+    font-size:.6em;
+}
+
+span:hover > i {
+    visibility: visible;
+}
+
+span > i {
+    visibility:hidden;
 }
