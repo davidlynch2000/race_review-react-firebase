@@ -13,18 +13,25 @@ const Settings = (props) => {
                 <div className='allUserInfo'>
                     <div className='editField'>
                         <label> Name: </label>
-                        <span>{'First Name'}<i className="material-icons editIcon">edit</i></span>
-                        <span>{'Last Name'}<i className="material-icons editIcon">edit</i></span>
+                        <span>{props.firstName}<i className="material-icons editIcon">edit</i></span>
+                        <span>{props.lastName}<i className="material-icons editIcon">edit</i></span>
                     </div>
                     <div className='editField'>
                         <label> Username: </label>
-                        <span>{'Username'}<i className="material-icons editIcon">edit</i></span>
+                        <span>{props.userName}<i className="material-icons editIcon">edit</i></span>
                     </div>
                 </div>
             </div>
         </div>
     );
-
 }
 
-export default connect()(Settings);
+const mapStateToProps = (state) =>{
+    return{
+        firstName:state.firebase.profile.firstname,
+        lastName:state.firebase.profile.firstname,
+        userName:state.firebase.profile.username,
+    }
+}
+
+export default connect(mapStateToProps)(Settings);
