@@ -30,6 +30,10 @@ span:hover > i {
     visibility: visible;
 }
 
+span:hover{
+    cursor:pointer;
+}
+
 span > i {
     visibility:hidden;
 }
