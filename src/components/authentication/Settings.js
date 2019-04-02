@@ -5,34 +5,20 @@ import {connect} from 'react-redux';
 class Settings extends Component{
     state = {
         firstName:'',
+        firstNameEditVisible:false,
         lastName:'',
+        lastNameEditVisible:false,
         userName:'',
+        userNameEditVisible:false,
         editVisible: false,
     }
 
-    // setInitialComponentState = () =>{
-    //     this.setState({
-    //         firstName:this.state.firstName,
-    //         lastName:this.state.lastName,
-    //         userName:this.state.userName,
-    //     });
-    // }
-
-    // componentDidMount = () =>{
-    //     console.log(this.props);
-    //     // this.setInitialComponentState();
-    //     // console.log(this.state);
-    // }
-
-
     handleClick = (e) =>{
-        console.log(this.state);
         e.preventDefault();
         this.setState({
             ...this.state,
-            editVisible:!this.state.editVisible,
+            [e.target.id + 'EditVisible']:!this.state[e.target.id + 'EditVisible'],
         });
-        console.log(this.state.editVisible);
     }
 
     handleChange = (e) =>{
@@ -41,14 +27,13 @@ class Settings extends Component{
             ...this.state,
             [e.target.id]:e.target.value,
         });
-        console.log(this.state);
     }
 
     handleBlur = (e) =>{
         e.preventDefault();
         this.setState({
             ...this.state,
-            editVisible:!this.state.editVisible,
+            [e.target.id + 'EditVisible']:!this.state[e.target.id + 'EditVisible'],
         })
     }
     
@@ -63,9 +48,12 @@ class Settings extends Component{
                         <div className='editField'>
                             <div>
                                 <label> Name: </label>
-                                <span onClick={this.handleClick} onBlur={this.handleBlur} className='firstName'>
+                                <span 
+                                    onClick={this.handleClick} 
+                                    onBlur={this.handleBlur}
+                                >
                                     {
-                                        this.state.editVisible ?
+                                        this.state.firstNameEditVisible ?
                                             <input
                                                 autoFocus
                                                 id='firstName' 
@@ -74,15 +62,47 @@ class Settings extends Component{
                                                 onChange={this.handleChange}
                                             />
                                             :
-                                            <span>{this.props.firstName}<i className="material-icons editIcon">edit</i></span>
+                                            <span id='firstName'>{this.props.firstName}<i className="material-icons editIcon">edit</i></span>
                                     }
                                 </span>
-                                <span> {this.props.lastName}<i className="material-icons editIcon">edit</i></span>
+                                <span 
+                                    onClick={this.handleClick} 
+                                    onBlur={this.handleBlur}
+                                >
+                                    {
+                                        this.state.lastNameEditVisible ?
+                                            <input
+                                                autoFocus
+                                                id='lastName' 
+                                                type='textarea'
+                                                defaultValue={this.props.lastName} 
+                                                onChange={this.handleChange}
+                                            />
+                                            :
+                                            <span id='lastName'>{this.props.lastName}<i className="material-icons editIcon">edit</i></span>
+                                    }
+                                </span>
                             </div>
                         </div>
                         <div className='editField'>
                             <label> Username: </label>
-                            <span>{this.props.userName}<i className="material-icons editIcon">edit</i></span>
+                            <span 
+                                    onClick={this.handleClick} 
+                                    onBlur={this.handleBlur}
+                                >
+                                    {
+                                        this.state.userNameEditVisible ?
+                                            <input
+                                                autoFocus
+                                                id='userName' 
+                                                type='textarea'
+                                                defaultValue={this.props.userName} 
+                                                onChange={this.handleChange}
+                                            />
+                                            :
+                                            <span id='userName'>{this.props.userName}<i className="material-icons editIcon">edit</i></span>
+                                    }
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -99,5 +119,6 @@ const mapStateToProps = (state) =>{
         userName:state.firebase.profile.username,
     });
 }
+
 
 export default connect(mapStateToProps)(Settings);
