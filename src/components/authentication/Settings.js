@@ -43,6 +43,15 @@ class Settings extends Component{
         });
         console.log(this.state);
     }
+
+    handleBlur = (e) =>{
+        e.preventDefault();
+        this.setState({
+            ...this.state,
+            editVisible:!this.state.editVisible,
+        })
+    }
+    
     render(){
         return(
             <div className='container section'>
@@ -54,10 +63,11 @@ class Settings extends Component{
                         <div className='editField'>
                             <div>
                                 <label> Name: </label>
-                                <span onClick={this.handleClick} className='firstName'>
+                                <span onClick={this.handleClick} onBlur={this.handleBlur} className='firstName'>
                                     {
                                         this.state.editVisible ?
-                                            <input 
+                                            <input
+                                                autoFocus
                                                 id='firstName' 
                                                 type='textarea'
                                                 defaultValue={this.props.firstName} 
