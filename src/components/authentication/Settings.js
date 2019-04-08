@@ -3,6 +3,7 @@ import './Settings.css';
 import {connect} from 'react-redux';
 import {editUserSettings} from '../../ActionCreators/SettingsActionCreators';
 import {Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Settings extends Component{
     state = {
@@ -146,6 +147,15 @@ class Settings extends Component{
             </div>
         );
     }
+}
+
+Settings.propTypes = {
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    userName: PropTypes.string,
+    loadedProfile: PropTypes.bool,
+    auth: PropTypes.object,
+    settingsEdit: PropTypes.func,
 }
 
 const mapStateToProps = (state) =>{
