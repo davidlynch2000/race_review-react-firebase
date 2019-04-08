@@ -25,4 +25,4 @@ Delete RR
 (Main Page) Click one of the existing RRs that has been created by the logged in user. Scroll to the bottom of the page. Click the delete button. On the modal that pops up, click the Delete button.
 
 Update Username, firstname, lastname
-(Main Page) Click on the gear icon in the upper right corner. (Settings Page) Click on the name you want to change, then either hit the enter key or click somewhere else on the screen or tab out to make the text form disappear.
+(Any Page) Click on the gear icon in the upper right corner of the navbar. (Settings Page) Click on the name you want to change, then either hit enter or click somewhere else on the screen or tab out to make the text form disappear.
