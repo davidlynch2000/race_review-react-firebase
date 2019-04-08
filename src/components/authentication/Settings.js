@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Settings.css';
 import {connect} from 'react-redux';
+import {editUserSettings} from '../../ActionCreators/SettingsActionCreators';
 
 class Settings extends Component{
     state = {
@@ -10,7 +11,27 @@ class Settings extends Component{
         lastNameEditVisible:false,
         userName:'',
         userNameEditVisible:false,
-        editVisible: false,
+        loadedFirstTime: false,
+    };
+
+    static getDerivedStateFromProps = (props,current_state) => {
+        if(!current_state.loadedFirstTime && props.loadedProfile){
+            let firstNameChange = props.firstName !== current_state.firstName ? props.firstName : current_state.firstName;
+            let lastNameChange = props.lastName !== current_state.lastName ? props.lastName : current_state.lastName;
+            let userNameChange = props.userName !== current_state.userName ? props.userName : current_state.userName;
+            return {
+                ...current_state,
+                firstName: firstNameChange,
+                lastName: lastNameChange,
+                userName: userNameChange,
+                loadedFirstTime:true,
+            };
+        }
+        else{
+            return{
+                ...current_state,
+            };
+        }
     }
 
     handleClick = (e) =>{
@@ -31,12 +52,25 @@ class Settings extends Component{
 
     handleBlur = (e) =>{
         e.preventDefault();
+        // console.log(this.state);
+        this.props.settingsEdit(this.state.firstName,this.state.lastName,this.state.userName);
+        this.hideFormField(e.target.id);
+    }
+
+    handleKeyPress = (e) =>{
+        if(e.key === 'Enter'){
+            this.hideFormField(e.target.id);
+        }
+        this.props.settingsEdit(this.state.firstName,this.state.lastName,this.state.userName);
+    }
+
+    hideFormField = (id) =>{
         this.setState({
             ...this.state,
-            [e.target.id + 'EditVisible']:!this.state[e.target.id + 'EditVisible'],
+            [id + 'EditVisible']:!this.state[id + 'EditVisible'],
         })
     }
-    
+
     render(){
         return(
             <div className='container section'>
@@ -51,6 +85,7 @@ class Settings extends Component{
                                 <span 
                                     onClick={this.handleClick} 
                                     onBlur={this.handleBlur}
+                                    onKeyPress={this.handleKeyPress}
                                 >
                                     {
                                         this.state.firstNameEditVisible ?
@@ -58,16 +93,17 @@ class Settings extends Component{
                                                 autoFocus
                                                 id='firstName' 
                                                 type='textarea'
-                                                defaultValue={this.props.firstName} 
+                                                defaultValue={this.state.firstName} 
                                                 onChange={this.handleChange}
                                             />
                                             :
-                                            <span id='firstName'>{this.props.firstName}<i className="material-icons editIcon">edit</i></span>
+                                            <span id='firstName'>{this.state.firstName}<i className="material-icons editIcon">edit</i></span>
                                     }
                                 </span>
                                 <span 
                                     onClick={this.handleClick} 
                                     onBlur={this.handleBlur}
+                                    onKeyPress={this.handleKeyPress}
                                 >
                                     {
                                         this.state.lastNameEditVisible ?
@@ -75,11 +111,11 @@ class Settings extends Component{
                                                 autoFocus
                                                 id='lastName' 
                                                 type='textarea'
-                                                defaultValue={this.props.lastName} 
+                                                defaultValue={this.state.lastName} 
                                                 onChange={this.handleChange}
                                             />
                                             :
-                                            <span id='lastName'>{this.props.lastName}<i className="material-icons editIcon">edit</i></span>
+                                            <span id='lastName'>{this.state.lastName}<i className="material-icons editIcon">edit</i></span>
                                     }
                                 </span>
                             </div>
@@ -89,6 +125,7 @@ class Settings extends Component{
                             <span 
                                     onClick={this.handleClick} 
                                     onBlur={this.handleBlur}
+                                    onKeyPress={this.handleKeyPress}
                                 >
                                     {
                                         this.state.userNameEditVisible ?
@@ -96,11 +133,11 @@ class Settings extends Component{
                                                 autoFocus
                                                 id='userName' 
                                                 type='textarea'
-                                                defaultValue={this.props.userName} 
+                                                defaultValue={this.state.userName} 
                                                 onChange={this.handleChange}
                                             />
                                             :
-                                            <span id='userName'>{this.props.userName}<i className="material-icons editIcon">edit</i></span>
+                                            <span id='userName'>{this.state.userName}<i className="material-icons editIcon">edit</i></span>
                                     }
                             </span>
                         </div>
@@ -109,7 +146,6 @@ class Settings extends Component{
             </div>
         );
     }
-
 }
 
 const mapStateToProps = (state) =>{
@@ -117,8 +153,14 @@ const mapStateToProps = (state) =>{
         firstName:state.firebase.profile.firstname,
         lastName:state.firebase.profile.lastname,
         userName:state.firebase.profile.username,
+        loadedProfile:state.firebase.profile.isLoaded,
     });
 }
 
+const mapDispatchToProps = (dispatch) =>{
+    return({
+        settingsEdit: (firstname,lastname,username) => dispatch(editUserSettings(firstname,lastname,username)),
+    });
+}
 
-export default connect(mapStateToProps)(Settings);
+export default connect(mapStateToProps,mapDispatchToProps)(Settings);
