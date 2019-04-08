@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Settings.css';
 import {connect} from 'react-redux';
 import {editUserSettings} from '../../ActionCreators/SettingsActionCreators';
+import {Redirect} from 'react-router-dom';
 
 class Settings extends Component{
     state = {
@@ -36,10 +37,7 @@ class Settings extends Component{
 
     handleClick = (e) =>{
         e.preventDefault();
-        this.setState({
-            ...this.state,
-            [e.target.id + 'EditVisible']:!this.state[e.target.id + 'EditVisible'],
-        });
+        this.toggleFormField(e.target.id);
     }
 
     handleChange = (e) =>{
@@ -52,19 +50,18 @@ class Settings extends Component{
 
     handleBlur = (e) =>{
         e.preventDefault();
-        // console.log(this.state);
         this.props.settingsEdit(this.state.firstName,this.state.lastName,this.state.userName);
-        this.hideFormField(e.target.id);
+        this.toggleFormField(e.target.id);
     }
 
     handleKeyPress = (e) =>{
         if(e.key === 'Enter'){
-            this.hideFormField(e.target.id);
+            this.toggleFormField(e.target.id);
         }
         this.props.settingsEdit(this.state.firstName,this.state.lastName,this.state.userName);
     }
 
-    hideFormField = (id) =>{
+    toggleFormField = (id) =>{
         this.setState({
             ...this.state,
             [id + 'EditVisible']:!this.state[id + 'EditVisible'],
@@ -72,6 +69,9 @@ class Settings extends Component{
     }
 
     render(){
+        if(!this.props.auth.uid){
+            return <Redirect to='/signin'/>
+        }
         return(
             <div className='container section'>
                 <div className='card'>
@@ -154,6 +154,7 @@ const mapStateToProps = (state) =>{
         lastName:state.firebase.profile.lastname,
         userName:state.firebase.profile.username,
         loadedProfile:state.firebase.profile.isLoaded,
+        auth:state.firebase.auth,
     });
 }
 
