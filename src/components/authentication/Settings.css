@@ -1,5 +1,39 @@
-form{
-    background:whitesmoke;
-    margin-top:60px;
-    padding-bottom:30px;
+.card{
+    padding:0px 10px 30px 10px;
+}
+
+.title{
+    text-align: center;
+}
+
+.card-title{
+    font-size:xx-large !important;
+}
+
+.allUserInfo{
+
+}
+
+.editField{
+    margin:15px;
+}
+
+.editField > span{
+    font-size:1.4em;
+}
+
+.editIcon{
+    font-size:.6em;
+}
+
+span:hover > i {
+    visibility: visible;
+}
+
+span:hover{
+    cursor:pointer;
+}
+
+span > i {
+    visibility:hidden;
 }

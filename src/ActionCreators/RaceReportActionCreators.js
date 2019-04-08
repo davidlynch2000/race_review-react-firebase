@@ -44,7 +44,7 @@ export const deleteRaceReport = (raceReportId) =>{
             const firestore = getFirestore();
             firestore.doc(`racereports/${raceReportId}`).delete()
             .then(()=>{
-                dispatch({type:'DELETE_RACEREPORT',});
+                dispatch({type:'DELETE_RACEREPORT'});
             })
             .catch((err)=>{
                 dispatch({type:'DELETE_RACEREPORT_ERROR'});

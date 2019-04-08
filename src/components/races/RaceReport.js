@@ -28,7 +28,7 @@ const RaceReport = (props) =>{
                 <p>{review.summary}</p>
                 {editable ? 
                     (
-                    <div className='row editButton'>
+                    <div className='row buttonRow'>
                         <Link to={'/editracereport/'+props.match.params.id}>
                             <button 
                                 className='teal lighten-4 input-field col l2 m2 s4 offset-l3 offset-m3'>
